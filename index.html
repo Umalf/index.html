@@ -2,12 +2,56 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Для мобильной адаптации -->
     <title>Карьерный Тест</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>body { font-family: Arial; } .question { margin: 10px; } button { margin: 5px; }</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center; /* Центрирование всего контента */
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #progress {
+            width: 100%; /* Шире для мобильных */
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        #question-container {
+            max-width: 400px;
+            margin: 0 auto; /* Центрирование контейнера */
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            color: red; /* Красный цвет для текста вопросов (для теста) */
+            margin-bottom: 15px;
+            line-height: 1.4; /* Лучшая читаемость */
+        }
+        button {
+            background-color: #007bff; /* Синий цвет */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3; /* Темнее при наведении */
+        }
+    </style>
 </head>
 <body>
-    <h1>Тест на сильные стороны и профессии</h1>
+    <h1>Карьерный Тест</h1>
     <progress id="progress" value="0" max="124"></progress>
     <div id="question-container"></div>
     <script>
@@ -161,7 +205,7 @@
             let qList = questions[currentSection];
             if (currentQuestion < qList.length) {
                 let container = document.getElementById('question-container');
-                container.innerHTML = `<p>${currentSection.toUpperCase()}: Вопрос ${currentQuestion + 1} из ${qList.length}</p><p>${qList[currentQuestion]}</p>`;
+                container.innerHTML = `<p>${currentSection.toUpperCase()}: Вопрос ${currentQuestion + 1} из ${qList.length}</p><p>${qList[currentQuestion]}</p>`; // Убедились, что текст добавляется
                 if (currentSection === 'values') {
                     ['Всегда важно', 'Скорее важно', 'Не важно'].forEach((label, idx) => {
                         let btn = document.createElement('button');
